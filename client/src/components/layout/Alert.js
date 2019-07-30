@@ -8,6 +8,7 @@ const Alert = ({ alerts }) =>
   alerts.map(alert => (
     <div key={alert.id} className={`alert alert-${alert.alertType}`}>
       {alert.msg}
+      {/* <i style={{ float: 'right' }} className='fas fa-times' /> */}
     </div>
   ));
 
