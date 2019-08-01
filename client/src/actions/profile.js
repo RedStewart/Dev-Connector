@@ -76,7 +76,7 @@ export const addExperience = (formData, history) => async dispatch => {
 
     dispatch(setAlert('Experience Added', 'success'));
 
-    history.push('/dashboard');
+    // history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -109,7 +109,7 @@ export const addEducation = (formData, history) => async dispatch => {
 
     dispatch(setAlert('Education Added', 'success'));
 
-    history.push('/dashboard');
+    //history.push('/dashboard');
   } catch (err) {
     const errors = err.response.data.errors;
 
