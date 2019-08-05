@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 const axios = require('axios');
 const config = require('config');
 
@@ -149,7 +150,8 @@ router.get('/user/:user_id', async (req, res) => {
 // @access  Private
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove users posts
+    // Rmove user posts
+    await Post.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user
@@ -214,7 +216,8 @@ router.put(
 
       await profile.save();
 
-      res.json({ profile });
+      res.json(profile);
+      // res.json({profile});
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -300,7 +303,8 @@ router.put(
 
       await profile.save();
 
-      res.json({ profile });
+      res.json(profile);
+      // res.json({ profile });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
