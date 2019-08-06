@@ -56,7 +56,7 @@ const statsStyle = {
 
 ProfileGithub.propTypes = {
   getGithubRepos: PropTypes.func.isRequired,
-  repos: PropTypes.array.isRequired,
+  repos: PropTypes.array,
   username: PropTypes.string.isRequired
 };
 
