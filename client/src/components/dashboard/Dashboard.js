@@ -16,7 +16,6 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-    console.log('Called from useEffect');
   }, [getCurrentProfile]);
 
   return loading && profile === null ? (
@@ -31,7 +30,6 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          {console.log('Called from Experience render')}
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
           <div className='my-2'>
