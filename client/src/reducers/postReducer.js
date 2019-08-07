@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_ERROR } from '../actions/types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES } from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -15,6 +15,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: payload,
+        loading: false
+      };
+
+    case UPDATE_LIKES:
+      return {
+        ...state,
+        // map through the posts in state, for each post check to see if its the correct one (passed in ID from payload) - IF correct return everything in the post but change the like count - ELSE return regular post (do nothing)
+        posts: state.posts.map(post =>
+          post._id === payload.postId ? { ...post, likes: payload.likes } : post
+        ),
         loading: false
       };
 
