@@ -149,7 +149,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
       .map(like => like.user.toString())
       .indexOf(req.user.id);
 
-    post.likes.splice(removeIndex);
+    post.likes.splice(removeIndex, 1);
 
     await post.save();
 
